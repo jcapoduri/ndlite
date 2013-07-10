@@ -4,7 +4,24 @@ namespace nd;
 
 // To Do
 class Relation extends Persistent{
-	public function __construct($data, Persistent $father){
+	public function __construct($data, Persistent $father){		
+		parent::__construct($data);
+		//load fields: TODO
+		$obj1 = NdLite::get($data["object_from"]);
+		$obj2 = NdLite::get($data["object_to"]);
+		array_merge($this->fields, $obj1->keys());
+		array_merge($this->fields, $obj2->keys());
+		/*$len = count($this->fields);
+		while($len--){
+			$this->fields
+		};*/
+	}
+
+
+};
+
+class Relationship {
+	public function __construct($data, Persistent $father){		
 		$this->name = $data["name"];
 		$this->tablename = $data["tablename"];
 		$this->nd_fields = $data["nd_fields"];
@@ -19,19 +36,10 @@ class Relation extends Persistent{
 				$this->type = 3;
 				break;
 		}
-		$this->father_name = $data["object_from"]; 
-		$this->son_name = $data["object_to"];
-		$this->father = $father;
-		$this->sons = array();
+		
 		//load fields: TODO
-		$obj1 = NdLite::get($this->father_name);
-		$obj2 = NdLite::get($this->son_name);
-		array_merge($this->fields, $obj1->keys());
-		array_merge($this->fields, $obj2->keys());
-		/*$len = count($this->fields);
-		while($len--){
-			$this->fields
-		};*/
+		$this->father_name = $data["object_from"];
+		$this->son_name = $data["object_to"];		
 	}
 
 	public function link(Persistent $obj){
@@ -50,7 +58,7 @@ class Relation extends Persistent{
 
 	public function last(){}
 
-	public function next(){}
+	public function next(){}	
 
 	private $name;
 	private $father_name;
@@ -62,16 +70,5 @@ class Relation extends Persistent{
 
 	private $current;
 };
-
-/*
-{
-	"name" : "inner_name", //required
-	"tablename": "name insdide table", //optional
-	"nd_fields": false, //optional, include base neodymium fields
-	"type": "many-to-many", // values [1-to-many, many-to-1, many-to-many]
-	"object_from": "object_name",
-	"object_to": "object_name"	
-}
-*/
 
 ?>

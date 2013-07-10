@@ -1,7 +1,17 @@
 NdLite
 ======
 
-POC for small object-relation mapping (ORM) for PHP, highly configurable and based in JSON.
+Neodimium Lite is a POC of a object-relation mapping (ORM) for PHP, C++ and possible other languages, highly configurable and based in JSON.
+
+The main idea is to design your model in a base JSON file with all the data needed by all the systems based on it and then use the library for each language to start to use it.
+
+The directives are:
+* Highly configurable
+* non-intrusive with your code
+* no other dependency needed
+* highly extensible
+* cross-plataform / cross-language
+* small
 
 The global JSON file to generate the system
 
