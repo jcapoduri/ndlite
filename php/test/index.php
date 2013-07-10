@@ -4,7 +4,7 @@
 <body>
 <?php
 
-include 'php/ndlite.php';
+include '../src/ndlite.php';
 
 \nd\NdLite::init(\nd\NdLite::loadJSONfile('unittest.js'));
 

@@ -95,6 +95,9 @@ class Storage extends StorageEngine{
 		return $ok;
 	}
 
+	public function commitRelation(Relation $rel){}
+	public function updateRelation(Relation $rel){}
+
 	public function beginTransaction() {
 		$i = count($this->_storages);
 		$ok = true;
@@ -147,16 +150,25 @@ class NdLite {
 	private $_opts = array();
 	private $_storage;
 	private $_objects;
+	private $_relations;
 
 	private function __construct(array $opts){
 		if(!empty($opts)) $this->_opts = $opts;
 		$objs = $this->_opts["objects"];
-		var_dump($objs);
+		$rels = $this->_opts["relations"];
+
 		$len = count($objs);
 		$obj;
 		while($len--) {
 			$obj = $objs[$len];
 			$this->_objects[$obj["name"]] = $obj;
+		};
+
+		$len = count($rels);
+		$rel;
+		while($len--) {
+			$rel = $rels[$len];
+			$this->_relations[$rel["name"]] = $rel;
 		};
 	}
 
@@ -192,6 +204,14 @@ class NdLite {
 		return $ret;
 	}
 	
+	public static function relation($name){
+		$ret = null;
+		$objs = self::$instance->_relations;
+		if(isset($objs[$name])){
+			$ret = new Relation($objs[$name]);
+		};
+		return $ret;	
+	}
 };
 
 ?>

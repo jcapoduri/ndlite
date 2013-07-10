@@ -283,7 +283,6 @@ class Persistent{
 
 	public function unerase(){
 		NdLite::storage()->unerase($this);
-
 	}
 
 	public function touch(){

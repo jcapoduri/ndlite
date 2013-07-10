@@ -23,6 +23,9 @@ abstract class StorageEngine {
 	public abstract function unerase(Persistent $obj);
 	public abstract function touch(Persistent $obj);
 
+	public abstract function commitRelation(Relation $rel);
+	public abstract function updateRelation(Relation $rel);
+
 	public function beginTransaction() {}
 	public function commitTransaction() {}
 	public function rollbackTransaction() {}

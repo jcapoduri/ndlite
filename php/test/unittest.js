@@ -47,7 +47,7 @@
 	],
 	"relations": [
 		{
-			"name": "reBusinessBooks",
+			"name": "relBusinessBooks",
 			"object_from": "business",
 			"object_to": "book"
 		}

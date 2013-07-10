@@ -64,6 +64,7 @@ the relation object contains the information of a relation between two objects
 		"tablename": "name insdide table", //optional
 		"nd_fields": false, //optional, include base neodymium fields
 		"type": "many-to-many", // values [1-to-many, many-to-1, many-to-many]
+		"cascade": false, //optional, if delete and this is true, all related value are deleted
 		"object_from": "object_name",
 		"object_to": "object_name"	
 	}
@@ -73,12 +74,13 @@ the storage array contains storage engines available to persist
 	//storage
 	{
 		"name": "storage_name",
-		"type": "", // ["database", "local", "external", "mongodb"]
+		"type": "", // ["database", "local", "external", "mongodb", "api"]
 		"db_host": "",
 		"db_name": "",
 		"db_user": "",
 		"db_pass": "",
 		"db_port": 3061,
-		"db_type": "", //["mysql", "psql", "litesql"],
-		"local_folder": "folder_name"
+		"db_type": "", //["mysql", "psql", "litesql", "restapi"],
+		"local_folder": "folder_name",
+		"base_uri" : "" //only for api, basic url		
 	}

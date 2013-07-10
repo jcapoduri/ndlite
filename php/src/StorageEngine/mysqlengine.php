@@ -22,7 +22,7 @@ class MySqlEngine extends StorageEngine {
 		$fields = array();
 		$val;
 
-		if($obj->attr("id") == 0)
+		if ($obj->attr("id") == 0) {
 			$query = "INSERT INTO " . $obj->tablename();	
 
 			while($len--){
@@ -60,7 +60,10 @@ class MySqlEngine extends StorageEngine {
 
 		$query .= join(' AND ', $where_closure);
 		$ret = $this->_handler->query($query);
-		if($ret->)
+		if ($value = $ret->fetch_assoc()) {
+			return true;
+			$obj->fromJSON($value);
+		} else return false;
 
 	}
 
@@ -80,6 +83,10 @@ class MySqlEngine extends StorageEngine {
 		$query = "UPDATE " . $this->_tablename . ' SET mdate = CURDATE() WHERE id = ' . $this->id();
 		$this->valid = Connection::query($query);		
 	}
+
+	public function commitRelation(Relation $rel){}
+
+	public function updateRelation(Relation $rel){}
 
 	public function beginTransaction(){
 		//To Do

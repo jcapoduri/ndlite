@@ -1,0 +1,14 @@
+#!/bin/sh
+DEPLOY_FROM="src"
+DEPLOY_TO="/public_html/api"
+
+FTP_HOST="ftp://fotocasitaazul.com.ar"
+FTP_USER="fotocasi"
+FTP_PASS="rucosHB2493"
+
+ncftp -u"$FTP_USER" -p"$FTP_PASS" $FTP_HOST<<EOF
+cd $DEPLOY_TO
+lcd $DEPLOY_FROM
+mput *
+quit
+EOF
