@@ -4,10 +4,11 @@
 #include "ndlite_global.h"
 #include <QObject>
 #include <QJsonValue>
+#include <QList>
 
 namespace nd {
 
-class NDLITESHARED_EXPORT relation : public QObject
+class NDLITESHARED_EXPORT relation : public object
 {
 public:
     relation(QJsonValue & initdata, QObject * parent = 0);
@@ -17,6 +18,15 @@ private:
 
 };
 
-}
+class NDLITESHARED_EXPORT relationship : public QObject {
+	Q_OBJECT
+public:
+	relationship(QJsonValue & initdata, QObject * parent = 0);
+
+
+private:
+	QList<relation> _relationList;
+	QJsonValue		_raw_data;
+};
 
 #endif // RELATION_H
