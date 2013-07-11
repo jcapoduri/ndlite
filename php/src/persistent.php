@@ -129,6 +129,7 @@ class PersistentField {
 	public function setValue($value) { 
 		//To Do emuns
 		$this->_value = $value; 
+		$this->_seal = false;
 	}  
 	public function enums() { 
 		//ToDo
@@ -166,6 +167,9 @@ class PersistentField {
 		return $val;
 	}
 
+	public function seal() { $this->_seal = true; }
+	public function isSealed() { return $this->_seal; }
+
 	private $_type;
 	private $_name;
 	private $_isKey;
@@ -176,6 +180,7 @@ class PersistentField {
 	private $_objectName;
 
 	private $_value;
+	private $_seal = false;
 };
 
 // To Do
@@ -266,6 +271,26 @@ class Persistent{
 		};
 		while($len_after-- && $ok) $ok = $ok && $loaded[$len_after];
 		return $ok;
+	}
+
+	public function seal() {
+		$ok = true;
+		$i = 0;
+		$len = count($this->_fields);
+		while ($ok && $i < $len) {
+			$this->_fields[$i]->seal();
+			$i++;
+		}; 
+	}
+
+	public function isSealed() {
+		$ok = true;
+		$i = 0;
+		$len = count($this->_fields);
+		while ($ok && $i < $len) {
+			$ok = $ok && $this->_fields[$i]->isSealed();
+			$i++;
+		}; 
 	}
 
 	/* CRUD operations*/

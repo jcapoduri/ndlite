@@ -25,6 +25,9 @@ abstract class StorageEngine {
 
 	public abstract function commitRelation(Relation $rel);
 	public abstract function updateRelation(Relation $rel);
+	
+	public abstract function listByRelation(Relation $rel);
+	public abstract function listByObject(Persistent $obj);
 
 	public function beginTransaction() {}
 	public function commitTransaction() {}
