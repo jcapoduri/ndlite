@@ -48,7 +48,34 @@ QJsonValue nd::field::storeValue()
 void nd::field::setValue(QVariant val)
 {
     //TODO
-    this->_value = val;
+    switch (this->_type) {
+        case String:
+            this->_value = QString(val);
+            break;
+        case Decimal:
+            this->_value = val.toDouble();
+            break;
+        case Number:
+            this->_value = val.toInt();
+            break;
+        case Bool:
+            this->_value = val.toBool();
+            break;
+        case Array:
+            this->_value = QList<QVariant>(val);
+            break;
+        case Time:
+            this->_value = QTime(val);
+            break;
+        case Date:
+            this->_value = QDate(val);
+            break;
+        case Timestamp:
+            this->_value = QDateTime(val);
+            break;
+        default:
+            this->_value = val;
+    };
 }
 
 void nd::field::init()

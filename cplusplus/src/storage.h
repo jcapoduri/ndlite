@@ -23,6 +23,12 @@ public:
     virtual bool commit(nd::relation & rel) = 0;
     virtual bool update(nd::relation & rel) = 0;
 
+    virtual QList<nd::object>   listObject(nd::relationship & rel) = 0;
+    virtual QList<nd::relation> listRelation(nd::relationship & rel) = 0;
+    virtual QList<nd::object>   listFilterByObject(nd::object & obj) = 0;
+    
+    virtual QVariant            fieldToStoreValue(QVariant & val) = 0;
+
     virtual void beginTransaction() {}
     virtual void commitTransaction() {}
     virtual void rollbackTransaction() {}
