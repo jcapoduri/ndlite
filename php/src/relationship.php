@@ -10,14 +10,10 @@ class Relation extends Persistent{
 		$obj1 = NdLite::get($data["object_from"]);
 		$obj2 = NdLite::get($data["object_to"]);
 		array_merge($this->fields, $obj1->keys());
-		array_merge($this->fields, $obj2->keys());
-		/*$len = count($this->fields);
-		while($len--){
-			$this->fields
-		};*/
+		array_merge($this->fields, $obj2->keys());		
 	}
 
-
+//	private $obj
 };
 
 class Relationship {
