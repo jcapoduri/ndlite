@@ -1,0 +1,13 @@
+INPUT(
+./..\obj\ndlite.o
+./..\obj\app.o
+./..\obj\protoobject.o
+./..\obj\ajax.o
+./..\obj\api.o
+./..\obj\solution.o
+./..\obj\moc_app.o
+./..\obj\moc_protoobject.o
+./..\obj\moc_ajax.o
+./..\obj\moc_api.o
+./..\obj\moc_solution.o
+);

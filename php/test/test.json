@@ -1,0 +1,62 @@
+{
+	"meta" : {},
+	"config" : {},
+	"objects" : [
+		{
+			"name": "user",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "username",
+					"type": "string"
+				},
+				{
+					"name": "password",
+					"type": "string"
+				},
+				{
+					"name": "email",
+					"type": "string"
+				},
+				{
+					"name": "admin",
+					"default": false,
+					"type": "bool"
+				}
+			]
+		}
+	],
+	"relations" : [],
+	"storages" : [
+		{
+			"name": "webapi",
+			"type": "api",
+			"url": "http://localhost",
+			"base_uri": "/dev/ndlite/php/test/"
+		},
+		{
+			"name": "mysql",
+			"type": "database",
+			"db_host": "localhost",
+			"db_name": "test",
+			"db_user": "root",
+			"db_pass": "abcd1234",
+			"db_port": 3061,
+			"db_type": "mysql"
+		}
+	],
+	"apps": {
+		"pc": {
+			"storage": ["webapi"],
+			"map": {
+					"user": "/users"
+				}
+			},
+		"web": {
+			"storage": ["mysql"],
+			"map": {
+					"user": "users"
+				}
+			}
+	}
+}

@@ -1,20 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
 <?php
+// CORS enable
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: X-Requested-With');
+ini_set('display_errors', 1);
 
-include '../src/ndlite.php';
+/* 
+* necessary files
+*/
+require '../api/ndlite/nd.php';
+require '../api/Slim/Slim.php';
+require '../api/bluesystem/ndlite.php';
 
-\nd\NdLite::init(\nd\NdLite::loadJSONfile('unittest.js'));
+/**
+* Start the mysqli connection and register a global object
+*/
 
-\nd\NdLite::initStorage();
+$system_json = file_get_contents('./test.json');
+$system = json_decode($system_json, true);
 
-var_dump(\nd\NdLite::instance());
+$bluesystem = new \ndlite\ndlite($system);
+$bluesystem->startApp("web");
 
-$test = \nd\NdLite::get("book", 2);
-var_dump($test);
+\Slim\Slim::registerAutoloader();
+$app = new \Slim\Slim();
 
+
+$app->get('/', function () use ($app){
+	$response = $app->response();
+	$response->write("{}");
+});
+
+$app->get('/a', function () use ($app){
+	$response = $app->response();
+	$response->write("{}");
+});
+
+$app->run();
 ?>
-</body>
-</html>

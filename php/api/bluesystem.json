@@ -1,0 +1,621 @@
+{
+	"meta": {},
+	"config": {
+		"version" : "2.0.0",
+		"system_name" : "bluesystem"
+	},
+	"objects": [
+		{
+			"name": "ringing",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "name",
+					"default": "[no name]",
+					"type": "string"
+				},
+				{
+					"name": "cost",
+					"default": 0.0,
+					"type": "decimal"
+				}
+			]
+		},
+		{
+			"name": "book",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "name",
+					"default": "[no name]",
+					"type": "string"
+				},
+				{
+					"name": "number",
+					"default": 0,
+					"type": "number"
+				},
+				{
+					"name": "scopies",
+					"default": 0,
+					"type": "number"
+				},
+				{
+					"name": "dcopies",
+					"default": 0,
+					"type": "number"
+				},
+				{
+					"name": "ringing",
+					"default": 0,
+					"type": "object",
+					"object_name": "ringing"
+				},
+				{
+					"name": "folder",
+					"type": "array",
+					"relation_name": "booksTree"
+				}
+
+			]
+		},
+		{
+			"name": "user",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "username",
+					"type": "string"
+				},
+				{
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"name": "lastname",
+					"type": "string"
+				},
+				{
+					"name": "password",
+					"type": "string"
+				},
+				{
+					"name": "shortpassword",
+					"type": "string"
+				},
+				{
+					"name": "email",
+					"type": "string"
+				},
+				{
+					"name": "telephone",
+					"type": "string"
+				},
+				{
+					"name": "active",
+					"default": true,
+					"type": "bool"
+				},
+				{
+					"name": "admin",
+					"default": false,
+					"type": "bool"
+				}
+			]
+		},
+		{
+			"name": "userlog",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "desc",
+					"type": "string"
+				},
+				{
+					"name": "table",
+					"type": "string"
+				},
+				{
+					"name": "obj_id",
+					"type": "number"
+				},
+				{
+					"name": "business",
+					"type": "object",
+					"object_name": "business"
+				}
+			]
+		},
+		{
+			"name": "userstamp",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "initstamp",
+					"type": "timestamp"
+				},
+				{
+					"name": "endstamp",
+					"type": "timestamp"
+				},
+				{
+					"name": "business",
+					"type": "object",
+					"object_name": "business"
+				}
+			]
+		},
+		{
+			"name": "client",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"name": "email",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "job",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "date",
+					"type": "date"
+				},
+				{
+					"name": "hour",
+					"type": "time"
+				},
+				{
+					"name": "fileTitle",
+					"type": "string"
+				},
+				{
+					"name": "book",
+					"type": "object",
+					"object_name": "book"
+				},
+				{
+					"name": "kind",
+					"type": "enum",
+					"enum_values": ["fromClient", "fromFile", "fromBooks"]
+				},
+				{
+					"name": "done",
+					"type": "bool"
+				},
+				{
+					"name": "ignore",
+					"type": "bool"
+				},
+				{
+					"name": "userowner",
+					"type": "object",
+					"object_name": "user"
+				},
+				{
+					"name": "business",
+					"type": "object",
+					"object_name": "business"
+				},
+                {
+                    "name": "workorders",
+                    "type": "array",
+                    "relation_name": "workorderJobs"
+                }
+			]
+		},
+		{
+			"name": "business",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "name",
+					"default": "",
+					"type": "string"
+				},
+				{
+					"name": "address",
+					"default": "",
+					"type": "string"
+				},
+				{
+					"name": "owner",
+					"default": "",
+					"type": "string"
+				},
+				{
+					"name": "email",
+					"default": "",
+					"type": "string"
+				},
+				{
+					"name": "telephone",
+					"default": "",
+					"type": "string"
+				},
+				{
+					"name": "validUsers",
+					"type": "array",
+					"relation_name": "validUsers"
+				},
+				{
+					"name": "books",
+					"type": "array",
+					"relation_name": "businessBook"
+				},
+				{
+					"name": "ringing",
+					"type": "array",
+					"relation_name": "ringingBusiness"
+				},
+				{
+					"name": "sfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "dfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "isfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "idfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "csfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "cdfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "icsfvalue",
+					"type": "decimal",
+					"default": 0.0
+				},
+				{
+					"name": "icdfvalue",
+					"type": "decimal",
+					"default": 0.0
+				}
+			]
+		},
+		{
+			"name": "workorder",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "description",
+					"type": "string"
+				},
+				{
+					"name": "costumername",
+					"type": "string"
+				},
+				{
+					"name": "observations",
+					"type": "string"
+				},
+				{
+					"name": "copies",
+					"type": "number"
+				},
+				{
+					"name": "withRinging",
+					"type": "bool"
+				},
+				{
+					"name": "doComplete",
+					"type": "bool"
+				},
+				{
+					"name": "lista",
+					"type": "bool"
+				},
+                {
+    				"name": "ignore",
+					"type": "bool"
+				},
+				{
+					"name": "entregado",
+					"type": "bool"
+				},
+				{
+					"name": "deadline",
+					"type": "timestamp"
+				},
+				{
+					"name": "simplefaz",
+					"type": "number"
+				},
+				{
+					"name": "doublefaz",
+					"type": "number"
+				},
+				{
+					"name": "simplefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "doublefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "isimplefaz",
+					"type": "number"
+				},
+				{
+					"name": "idoublefaz",
+					"type": "number"
+				},
+				{
+					"name": "isimplefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "idoublefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "csimplefaz",
+					"type": "number"
+				},
+				{
+					"name": "cdoublefaz",
+					"type": "number"
+				},
+				{
+					"name": "csimplefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "cdoublefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "icsimplefaz",
+					"type": "number"
+				},
+				{
+					"name": "icdoublefaz",
+					"type": "number"
+				},
+				{
+					"name": "icsimplefaztotal",
+					"type": "decimal"
+				},
+				{
+					"name": "icdoublefaztotal",
+					"type": "decimal"
+				},				
+				{
+					"name": "anillado",
+					"type": "decimal"					
+				},
+                {
+    				"name": "senna",
+					"type": "decimal"					
+				},
+				{
+					"name": "total",
+					"type": "decimal"
+				},
+				{
+					"name": "estado",
+					"type": "enum",
+					"enum_values": ["Waiting", "Fotocopiando", "Anillando", "Finished", "Delivered", "Recycled"]
+				},
+				{
+					"name": "howto",
+					"type": "enum",
+					"enum_values": ["TwoinOneDF", "TwoinOneSF", "toDF", "toSF", "HHDF", "HHSF", "likeThat"]
+				},
+				{
+					"name": "business",
+					"type": "object",
+					"object_name": "business"
+				},
+				{
+					"name": "workorders",
+					"type": "array",
+					"relation_name": "workorderJobs"
+				},
+                {
+                    "name": "outoforder",
+                    "type": "number"
+                },
+                {
+                    "name": "anilladoHowTo",
+                    "type": "enum",
+                    "enum_values": ["Superior", "Lateral", "Inferior"]
+                }
+			]
+		},
+		{
+			"name": "workorder_page",
+			"nd_fields": true,
+			"fields": [
+				{
+					"name": "pagefrom",
+					"type": "number"
+				},
+				{
+					"name": "pageto",
+					"type": "number"
+				},
+				{
+					"name": "business",
+					"type": "object",
+					"object_name": "business"
+				}
+			]
+		}
+	],
+	"relations": [
+		{
+			"name": "booksTree",
+			"nd_fields": true,
+			"type": "many-to-many",
+			"object_from": "book",
+			"object_to": "book"
+		},
+		{
+			"name": "pages",
+			"nd_fields": true,
+			"type": "1-to-many",
+			"object_from": "workorder",
+			"object_to": "workorder_page"
+		},
+		{
+			"name": "workorderJobs",
+			"nd_fields": true,
+			"type": "1-to-many",
+			"object_from": "job",
+			"object_to": "workorder"
+		},
+		{
+			"name": "validUsers",
+			"nd_fields": true,
+			"type": "1-to-many",
+			"object_from": "business",
+			"object_to": "user"
+		},		
+		{
+			"name": "businessBook",
+			"nd_fields": true,
+			"type": "1-to-many",
+			"object_from": "business",
+			"object_to": "book"
+		},
+		{
+			"name": "ringingBusiness",
+			"nd_fields": true,
+			"type": "1-to-many",
+			"object_from": "business",
+			"object_to": "ringing"
+		}
+	],
+	"storages": [
+		{
+			"name": "webapi",
+			"type": "api",
+			"url": "http://api.fotocasitaazul.com.ar",
+			"base_uri": "/"
+		},
+		{
+			"name": "dev-webapi",
+			"type": "api",
+			"url": "http://adevfotocasitaazul.com.ar",
+			"base_uri": "/api"
+		},
+		{
+			"name": "qa-webapi",
+			"type": "api",
+			"url": "http://qa.fotocasitaazul.com.ar",
+			"base_uri": "/api"
+		},
+		{
+			"name": "mysql-php-dev",
+			"type": "database",
+			"db_host": "localhost",
+			"db_name": "fotocasi_dev_bluesystem",
+			"db_user": "fotocasi_user",
+			"db_pass": "lokithor",
+			"db_port": 3061,
+			"db_type": "mysql"
+
+		},
+		{
+			"name": "mysql-php-qa",
+			"type": "database",
+			"db_host": "localhost",
+			"db_name": "fotocasi_qa_bluesystem",
+			"db_user": "fotocasi_user",
+			"db_pass": "lokithor",
+			"db_port": 3061,
+			"db_type": "mysql"
+
+		},
+		{
+			"name": "mysql-php",
+			"type": "database",
+			"db_host": "localhost",
+			"db_name": "fotocasi_bluesystem",
+			"db_user": "fotocasi_user",
+			"db_pass": "lokithor",
+			"db_port": 3061,
+			"db_type": "mysql"
+
+		},
+		{
+			"name": "mysql-local",
+			"type": "database",
+			"db_host": "localhost",
+			"db_name": "bluesystem",
+			"db_user": "root",
+			"db_pass": "abcd1234",
+			"db_port": 3061,
+			"db_type": "mysql"			
+		}
+	],
+	"apps": {
+		"pc": {
+			"storage": ["webapi-dev"],
+			"map": {
+					"workorder_page": "/pages",
+					"workorder": "/workorder",
+					"business": "/business",
+					"job": "/jobs",
+					"client": "/clients",
+					"userstamp": "/userstamp",
+					"userlog": "/userlog",
+					"user": "/users",
+					"book": "/books",
+					"ringing": "/ringing",
+					"ringingBusiness": "/business/:oid/ringing",
+					"businessBook": "/business/:oid/books",
+					"validUsers": "/business/:oid/users",
+					"workorderJobs": "/jobs/:oid/jobs",
+					"pages": "/workorder/:oid/pages",
+					"booksTree": "/books/:oid/books"
+				}
+			},
+		"web": {
+			"storage": ["mysql-local"],
+			"map": {
+					"workorder_page": "workorders_pages",
+					"workorder": "workorders",
+					"business": "business",
+					"job": "jobs",
+					"client": "client",
+					"userstamp": "userstamp",
+					"userlog": "userlog",
+					"user": "users",
+					"book": "books",
+					"ringing": "ringing",
+					"ringingBusiness": "business_anillados",
+					"businessBook": "business_books",
+					"validUsers": "business_users",
+					"workorderJobs": "jobs_workorders",
+					"pages": "workorders_workorders_pages",
+					"booksTree": "books_tree"
+				}
+			}
+	}	
+}

@@ -22,6 +22,7 @@ The global JSON file to generate the system
 		"objects": [],
 		"relations": [],
 		"storage": [],
+		"apps": []
 	}
 
 the Meta object contain info you want to preserve inside the system or keep in the file
@@ -56,8 +57,7 @@ the field contain the information of an attribute of the object
 	//fields
 	{
 		"isKey": false, // optional, false as default
-		"unique": false, // optional, false as default
-		"autoincremental": false, // optional, false as default
+		"unique": false, // optional, false as default		"autoincremental": false, // optional, false as default
 		"name": "value name", //required
 		"default": -1, //optional
 		"type": "", // ["string", "number", "decimal", "object", "array", "enum", "bool", "date", "time", "timestamp"]
@@ -71,7 +71,6 @@ the relation object contains the information of a relation between two objects
 	//relations
 	{
 		"name" : "inner_name", //required
-		"tablename": "name insdide table", //optional
 		"nd_fields": false, //optional, include base neodymium fields
 		"type": "many-to-many", // values [1-to-many, many-to-1, many-to-many]
 		"cascade": false, //optional, if delete and this is true, all related value are deleted
@@ -81,7 +80,7 @@ the relation object contains the information of a relation between two objects
 
 the storage array contains storage engines available to persist
 
-	//storage
+	//storages
 	{
 		"name": "storage_name",
 		"type": "", // ["database", "local", "external", "mongodb", "api"]
@@ -92,5 +91,14 @@ the storage array contains storage engines available to persist
 		"db_port": 3061,
 		"db_type": "", //["mysql", "psql", "litesql", "restapi"],
 		"local_folder": "folder_name",
-		"base_uri" : "" //only for api, basic url		
+		"base_uri" : "", //only for api, basic url
+		"map": {} //map between object/relation name and storage map
+	}
+
+the apps
+
+	//apps
+	["name"]: {
+		"storage": [], // storages used by the app
+		"map": {} //map between object/relation -> storage engine
 	}
