@@ -21,7 +21,8 @@ public:
 
     void    addMap(const QString name, const QString route);
     void    delMap(const QString name);
-    
+    ajax*   xhr() { return jqXhr; }
+
 signals:
     
 public slots:

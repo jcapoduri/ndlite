@@ -10,6 +10,7 @@
 #include <functional>
 #include "protoobject.h"
 #include "modeldefinition.h"
+#include "modelexception.h"
 
 namespace nd {
     class NDLITESHARED_EXPORT model : public protoObject

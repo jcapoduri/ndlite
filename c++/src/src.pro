@@ -22,7 +22,8 @@ SOURCES += ndlite.cpp \
     api.cpp \
     solution.cpp \
     model.cpp \
-    modeldefinition.cpp
+    modeldefinition.cpp \
+    modelexception.cpp
 
 HEADERS += ndlite_global.h \
     app.h \
@@ -31,7 +32,8 @@ HEADERS += ndlite_global.h \
     api.h \
     solution.h \
     model.h \
-    modeldefinition.h
+    modeldefinition.h \
+    modelexception.h
 
 unix:!symbian {
     maemo5 {
